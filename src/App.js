@@ -31,7 +31,8 @@ function App() {
     try{
 
       const response = await axios({
-        url: 'http://localhost:5001/payment',
+        //url: 'http://localhost:5001/payment',
+        url: 'https://stripeapi.onrender.com/payment',
         method: 'post',
         data:{
           amount: product.price*100,
