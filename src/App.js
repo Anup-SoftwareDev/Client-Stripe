@@ -61,9 +61,7 @@ function App() {
       <p>
         <span>Price:</span>{product.price}
       </p>
-      {console.log("pk:", process.env.REACT_APP_STRIPE_BASE_URL)}
       <StripeCheckout
-        //stripeKey = "pk_test_51KcnG7KElkCH1o6CFdGPZh8OoQVf0twm7ZJGwYALXkvDftZl1rykzHg4tsmje0Do2myICK2eEtl8KX14mw57PPAt003z9udGjD"
         stripeKey = {process.env.REACT_APP_PUBLISHABLE_KEY}
         label = "Pay Now"
         name="Pay With Credit Card"
