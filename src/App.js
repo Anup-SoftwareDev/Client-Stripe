@@ -17,21 +17,25 @@ function App() {
 
   const priceForStripe = product.price*100;
 
-  const handleSuccess = ()=>{
-
+  const handleSuccess = (status)=>{
+    if (status==="success"){
     MySwal.fire({
       icon: 'success',
       title: 'Payment was successful',
       time: 4000,
-    });
+    });}else{
+      MySwal.fire({
+        icon: 'error',
+        title: 'Sorry Payment was Unsuccessful',
+        time: 4000,
+    })}
 
   }
 
   const payNow = async token =>{
     try{
-
+      console.log(token)
       const response = await axios({
-        //url: 'http://localhost:5001/payment',
         url: process.env.REACT_APP_STRIPE_BASE_URL,
         method: 'post',
         data:{
@@ -42,12 +46,14 @@ function App() {
       });
       if(response.status===200){
 
-        handleSuccess()
+        handleSuccess(response.data.status)
         console.log('Your payment was successful');
+       
       }
 
     }catch (error){
       console.log(error)
+      handleSuccess("failure")
     }
   }
 
