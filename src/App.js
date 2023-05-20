@@ -34,8 +34,7 @@ function App() {
 
   const payNow = async token =>{
     try{
-      console.log(token)
-      console.log('url',process.env.REACT_APP_STRIPE_BASE_URL)
+     
       const response = await axios({
         url: process.env.REACT_APP_STRIPE_BASE_URL,
         method: 'post',
@@ -49,7 +48,6 @@ function App() {
 
         handleSuccess(response.data.status)
         console.log('Your payment was successful');
-        console.log(response)
        
       }
 
